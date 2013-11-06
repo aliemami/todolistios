@@ -13,6 +13,13 @@
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([XYZAppDelegate class]));
+        @try {
+            return UIApplicationMain(argc, argv, nil, NSStringFromClass([XYZAppDelegate class]));
+        }
+        @catch (NSException *exception) {
+            NSLog(@"%@",[NSThread callStackSymbols]);        }
+        @finally {
+            NSLog(@"finaly");
+        }
     }
 }
